@@ -4,6 +4,7 @@
 //using System.Boolean;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class village : MonoBehaviour
 {
@@ -25,8 +26,14 @@ public class village : MonoBehaviour
         //Instantiate(Piece, transform.position, transform.rotation);
         positionX = gameObject.transform.position.x;
         positionY = gameObject.transform.position.y;
-        distanceX = positionX - SquareSelectionScript.MainSquare[0];
-        distanceY = positionY - SquareSelectionScript.MainSquare[1];
+        distanceX = positionX;
+        distanceY = positionY;
+        if (SquareSelectionScript.MainSquare.Count != 0){
+            distanceX = Math.Abs(positionX - SquareSelectionScript.MainSquare[0]);
+            distanceY = Math.Abs(positionY - SquareSelectionScript.MainSquare[1]);
+        }
+
+       
 
     }  
 
@@ -37,6 +44,7 @@ public class village : MonoBehaviour
         if (distanceX <= 0.128 || distanceY <= 0.128)
         {
             caught = "caught";
+           // print("caught!!!");
         }
 
         if (caught == "caught")
