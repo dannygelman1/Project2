@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SquareSelectionScript : MonoBehaviour {
 
-	static string MainSquare = "None";
+	static List<int> MainSquare;
 	
 	// Use this for initialization
 	
@@ -16,12 +16,15 @@ public class SquareSelectionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print(MainSquare);
 	}
 
 	void TaskOnClick () {
-	MainSquare = gameObject.name;
-	
+		int MainSquare1 = int.Parse(gameObject.name.Substring(0,1));
+		int MainSquare2 = int.Parse(gameObject.name.Substring(1,1));
+		MainSquare = new List<int>();
+		MainSquare.Add(MainSquare1);
+		MainSquare.Add(MainSquare2);
+		print(MainSquare[0]);
     }
 
 }
