@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SquareSelectionScript : MonoBehaviour {
 
-	static List<int> MainSquare = new List<int>();
+	static public List<int> MainSquare = new List<int>();
 	
 	// Use this for initialization
 	
@@ -34,6 +34,9 @@ public class SquareSelectionScript : MonoBehaviour {
 		else if (MainSquare[0]==MainSquare1 && MainSquare[1]==MainSquare2) {
 			MainSquare = new List<int>();
 			GetComponent<Image>().color = Color.red;
+		}
+		else {
+			gameObject.BroadcastMessage("MoveSoldier", 1);
 		}
     }
 
