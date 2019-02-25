@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class MovementSelection : MonoBehaviour {
 	public int currentRow;
 	public int currentColumn;
 	public static string[] locationArray = new string[25];
+    	public string newGameScene;
 
 	// Use this for initialization
 	void Start () {
@@ -60,8 +62,8 @@ public class MovementSelection : MonoBehaviour {
 		//print(nwMainSquare[0]);
 		if(SquareRow==currentRow+1||SquareRow==currentRow-1||SquareRow==currentRow){
 			if(SquareColumn==currentColumn+1||SquareColumn==currentColumn-1||SquareColumn==currentColumn){
-			//Code for winning the game
-			print("Game over! you won!");
+                Debug.Log("you Win!");
+                SceneManager.LoadScene(newGameScene);
 			}
 		}
 	
