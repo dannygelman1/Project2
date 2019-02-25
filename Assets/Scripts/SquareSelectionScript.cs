@@ -41,7 +41,7 @@ public class SquareSelectionScript : MonoBehaviour {
 			GameObject[] goals = GameObject.FindGameObjectsWithTag("Goal");
 			foreach (GameObject soldier in soldiers)
 			{
-				print(soldier.name);
+				//print(soldier.name);
 				soldier.SendMessage("MoveSoldier", movement);
 			}
 			foreach (GameObject town in towns)
