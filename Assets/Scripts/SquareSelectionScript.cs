@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Diagnostics;
 
 public class SquareSelectionScript : MonoBehaviour {
 
@@ -23,13 +24,21 @@ public class SquareSelectionScript : MonoBehaviour {
 
 		int MainSquare1 = int.Parse(gameObject.name.Substring(0,1));
 		int MainSquare2 = int.Parse(gameObject.name.Substring(1,1));
+		string locationPiece = MovementSelection.locationArray[(MainSquare1-1)*5+MainSquare2-1];
+		//print(MovementSelection.locationArray.ToString());
+		//foreach(string str in MovementSelection.locationArray){
+		//print(str);
+		//}
+
 		if (MainSquare.Count==0){
+			print("No main square");
 			MainSquare = new List<int>();
 			MainSquare.Add(MainSquare1);
 			MainSquare.Add(MainSquare2);
 			GetComponent<Image>().color = Color.blue;
 		}
-		else if(MovementSelection.locationArray[(MainSquare1-1)*5+MainSquare2-1].Contains("Soldier")){
+		else if(locationPiece.Contains("Soldier")){
+			print("moving");
 			int[] movement = new int[2];
 			movement[0] = MainSquare1 - MainSquare[0];
 			movement[1] = MainSquare2 - MainSquare[1];
@@ -41,7 +50,6 @@ public class SquareSelectionScript : MonoBehaviour {
 			GameObject[] goals = GameObject.FindGameObjectsWithTag("Goal");
 			foreach (GameObject soldier in soldiers)
 			{
-				//print(soldier.name);
 				soldier.SendMessage("MoveSoldier", movement);
 			}
 			foreach (GameObject town in towns)
@@ -52,10 +60,19 @@ public class SquareSelectionScript : MonoBehaviour {
 			{
 				goal.SendMessage("resolveGoal", newMainSquare);
 			}
+			//print("Something");
+		//	                foreach(string str in MovementSelection.locationArray){                    
+                //	print(str);
+                	//}
+
 			GameObject.Find(MainSquare[0].ToString()+MainSquare[1].ToString()).GetComponent<Image>().color = Color.red;
 			MainSquare = new List<int>();
 		}
 		else {
+			print("No comment");
+			//print((MainSquare1-1)*5+MainSquare2-1);
+			//print(MovementSelection.locationArray[(MainSquare1-1)*5+MainSquare2-1]);
+			//print(MainSquare2);
 			GameObject.Find(MainSquare[0].ToString()+MainSquare[1].ToString()).GetComponent<Image>().color = Color.red;
 			MainSquare = new List<int>();	
 		}

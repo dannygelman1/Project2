@@ -6,8 +6,7 @@ using System.Linq;
 public class MovementSelection : MonoBehaviour {
 	public int currentRow;
 	public int currentColumn;
-	public static string[] locationArray = Enumerable.Repeat("",25).ToArray();
-	public GameObject gameOver;
+	public static string[] locationArray = new string[25];
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +16,6 @@ public class MovementSelection : MonoBehaviour {
 		currentRow = startRow;
 		currentColumn = startColumn;
 		locationArray[(currentRow-1)*5+currentColumn-1] = gameObject.name;
-		gameOver = GameObject.Find("GameOver");
-		gameOver.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -30,12 +27,16 @@ public class MovementSelection : MonoBehaviour {
 		int SquareColumn = SquareSelectionScript.MainSquare[1];
 		if(SquareRow==currentRow+1||SquareRow==currentRow-1||SquareRow==currentRow){
 			if(SquareColumn==currentColumn+1||SquareColumn==currentColumn-1||SquareColumn==currentColumn){
-				locationArray[(currentRow-1)*5+currentColumn-1] = "";
+				if(locationArray[(currentRow-1)*5+currentColumn-1]==gameObject.name){
+					locationArray[(currentRow-1)*5+currentColumn-1] = "";
+				}
 				currentRow = movement[0]+currentRow;
 				currentColumn = movement[1]+currentColumn;
 				string squareName = currentRow.ToString()+currentColumn.ToString();
 				gameObject.transform.position = GameObject.Find(squareName).transform.position;
 				locationArray[(currentRow-1)*5+currentColumn-1] = gameObject.name;
+				print("mew");
+				print(gameObject.name);
 			}
 		}
 	}
@@ -59,8 +60,8 @@ public class MovementSelection : MonoBehaviour {
 		//print(nwMainSquare[0]);
 		if(SquareRow==currentRow+1||SquareRow==currentRow-1||SquareRow==currentRow){
 			if(SquareColumn==currentColumn+1||SquareColumn==currentColumn-1||SquareColumn==currentColumn){
-				gameOver = GameObject.Find("GameOver");
-				gameOver.SetActive(true);
+			//Code for winning the game
+			print("Game over! you won!");
 			}
 		}
 	
