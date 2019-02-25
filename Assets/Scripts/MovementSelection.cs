@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class MovementSelection : MonoBehaviour {
 	public int currentRow;
 	public int currentColumn;
 	public static string[] locationArray = Enumerable.Repeat("",25).ToArray();
 	public GameObject gameOver;
+    public string newGameScene;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +19,8 @@ public class MovementSelection : MonoBehaviour {
 		currentRow = startRow;
 		currentColumn = startColumn;
 		locationArray[(currentRow-1)*5+currentColumn-1] = gameObject.name;
-		gameOver = GameObject.Find("GameOver");
-		gameOver.SetActive(false);
+		//gameOver = GameObject.Find("GameOver");
+		//gameOver.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -59,8 +61,10 @@ public class MovementSelection : MonoBehaviour {
 		//print(nwMainSquare[0]);
 		if(SquareRow==currentRow+1||SquareRow==currentRow-1||SquareRow==currentRow){
 			if(SquareColumn==currentColumn+1||SquareColumn==currentColumn-1||SquareColumn==currentColumn){
-				gameOver = GameObject.Find("GameOver");
-				gameOver.SetActive(true);
+                Debug.Log("you Win!");
+                //gameOver = GameObject.Find("GameOver");
+				//gameOver.SetActive(true);
+                SceneManager.LoadScene(newGameScene);
 			}
 		}
 	
