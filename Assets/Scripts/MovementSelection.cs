@@ -53,11 +53,13 @@ public class MovementSelection : MonoBehaviour {
 			}
 		}
 	}
-	void resolveGoal (int[] newMainSquare) {
-		int SquareRow = newMainSquare[0];
-		int SquareColumn = newMainSquare[1];
+	void resolveGoal (int[] nwMainSquare) {
+		int SquareRow = nwMainSquare[0];
+		int SquareColumn = nwMainSquare[1];
+		//print(nwMainSquare[0]);
 		if(SquareRow==currentRow+1||SquareRow==currentRow-1||SquareRow==currentRow){
 			if(SquareColumn==currentColumn+1||SquareColumn==currentColumn-1||SquareColumn==currentColumn){
+				gameOver = GameObject.Find("GameOver");
 				gameOver.SetActive(true);
 			}
 		}
