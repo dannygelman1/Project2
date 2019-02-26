@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartQuit : MonoBehaviour
+public class InstructionsOne : MonoBehaviour
 {
-    public string newGameScene;
-    public string inst;
+    public string nextPage;
+    public string mainMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,19 +18,15 @@ public class StartQuit : MonoBehaviour
     {
         
     }
-
-    public void NewGame()
+    public void NextPage()
     {
-        SceneManager.LoadScene(newGameScene);
+        SceneManager.LoadScene(nextPage);
+        Debug.Log("NEXT");
     }
 
-    public void Instruct()
+    public void MainMenu()
     {
-        SceneManager.LoadScene(inst);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
+        SceneManager.LoadScene(mainMenu);
+        Debug.Log("MAIN1");
     }
 }
