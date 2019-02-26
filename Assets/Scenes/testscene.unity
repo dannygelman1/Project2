@@ -1368,7 +1368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiText: {fileID: 120448299}
-  mainTimer: 5
+  mainTimer: 30
+  newGameScene: Lose
 --- !u!4 &632556059
 Transform:
   m_ObjectHideFlags: 0
