@@ -19,6 +19,7 @@ public class SetupScript : MonoBehaviour {
 		}
 		string[,] positionalArray = new string[5,5];
 		int level = PlayerPrefs.GetInt("level");
+		level = 5;
 		if(level==1){
 			positionalArray[0,0]="Soldier";
 			positionalArray[1,1]="Soldier";
@@ -33,12 +34,23 @@ public class SetupScript : MonoBehaviour {
 			positionalArray[4,4]="Goal";
 		
 		}
-		else{
+		else if(level==3){
 			positionalArray[0,0]="Soldier";
 			positionalArray[1,1]="Soldier";
 			positionalArray[1,0]="Soldier";
 			positionalArray[4,4]="Goal";
 			positionalArray[2,2]="Wall";
+		
+		}
+		else {
+			positionalArray[0,0]="Soldier";
+			positionalArray[1,1]="Soldier";
+			positionalArray[1,0]="Soldier";
+			positionalArray[4,4]="Goal";
+			positionalArray[3,1]="Wall";
+			positionalArray[3,2]="Wall";
+			positionalArray[3,3]="Wall";
+			positionalArray[3,0]="Wall";
 		
 		}
 		for(int i=1;i<6;i++){
