@@ -36,9 +36,12 @@ public class MovementSelection : MonoBehaviour {
 				currentColumn = movement[1]+currentColumn;
 				string squareName = currentRow.ToString()+currentColumn.ToString();
 				gameObject.transform.position = GameObject.Find(squareName).transform.position;
-				locationArray[(currentRow-1)*5+currentColumn-1] = gameObject.name;
-				print("mew");
-				print(gameObject.name);
+				string testing = locationArray[(currentRow-1)*5+currentColumn-1] ?? "";
+				if(testing.Contains("Wall")){
+					Destroy(gameObject);
+				}else{
+					locationArray[(currentRow-1)*5+currentColumn-1] = gameObject.name;
+				}
 			}
 		}
 	}
@@ -63,7 +66,8 @@ public class MovementSelection : MonoBehaviour {
 		if(SquareRow==currentRow+1||SquareRow==currentRow-1||SquareRow==currentRow){
 			if(SquareColumn==currentColumn+1||SquareColumn==currentColumn-1||SquareColumn==currentColumn){
                 Debug.Log("you Win!");
-                SceneManager.LoadScene(newGameScene);
+                PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level")+1);
+		SceneManager.LoadScene("win");
 			}
 		}
 	

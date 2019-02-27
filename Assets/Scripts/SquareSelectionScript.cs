@@ -29,8 +29,9 @@ public class SquareSelectionScript : MonoBehaviour {
 		//foreach(string str in MovementSelection.locationArray){
 		//print(str);
 		//}
-
-		if (MainSquare.Count==0){
+		if (locationPiece.Contains("Wall")){
+		}
+		else if (MainSquare.Count==0){
 			print("No main square");
 			MainSquare = new List<int>();
 			MainSquare.Add(MainSquare1);
@@ -70,9 +71,7 @@ public class SquareSelectionScript : MonoBehaviour {
 		}
 		else {
 			print("No comment");
-			//print((MainSquare1-1)*5+MainSquare2-1);
-			//print(MovementSelection.locationArray[(MainSquare1-1)*5+MainSquare2-1]);
-			//print(MainSquare2);
+			print(locationPiece);
 			GameObject.Find(MainSquare[0].ToString()+MainSquare[1].ToString()).GetComponent<Image>().color = Color.red;
 			MainSquare = new List<int>();	
 		}

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SetupScript : MonoBehaviour {
-	public static int level;
 	
 	// Use this for initialization
 	void Start () {
@@ -19,12 +18,28 @@ public class SetupScript : MonoBehaviour {
 			}
 		}
 		string[,] positionalArray = new string[5,5];
-		level = 1;
+		int level = PlayerPrefs.GetInt("level");
 		if(level==1){
 			positionalArray[0,0]="Soldier";
 			positionalArray[1,1]="Soldier";
 			positionalArray[1,0]="Soldier";
 			positionalArray[4,4]="Goal";
+		}
+		else if(level==2){
+			positionalArray[0,0]="Soldier";
+			positionalArray[1,1]="Soldier";
+			positionalArray[1,0]="Soldier";
+			positionalArray[2,2]="Town";
+			positionalArray[4,4]="Goal";
+		
+		}
+		else{
+			positionalArray[0,0]="Soldier";
+			positionalArray[1,1]="Soldier";
+			positionalArray[1,0]="Soldier";
+			positionalArray[4,4]="Goal";
+			positionalArray[2,2]="Wall";
+		
 		}
 		for(int i=1;i<6;i++){
 			for(int j=1;j<6;j++){
