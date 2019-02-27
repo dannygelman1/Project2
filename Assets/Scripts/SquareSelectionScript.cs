@@ -24,7 +24,7 @@ public class SquareSelectionScript : MonoBehaviour {
 
 		int MainSquare1 = int.Parse(gameObject.name.Substring(0,1));
 		int MainSquare2 = int.Parse(gameObject.name.Substring(1,1));
-		string locationPiece = MovementSelection.locationArray[(MainSquare1-1)*5+MainSquare2-1];
+		string locationPiece = MovementSelection.locationArray[(MainSquare1-1)*5+MainSquare2-1] ?? "";
 		//print(MovementSelection.locationArray.ToString());
 		//foreach(string str in MovementSelection.locationArray){
 		//print(str);
